@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="我的个人博客网站, 收集整理和提炼大数据相关知识">
+  <meta name="keywords" content="数据库, MySQL, python,大数据">
+  <meta name="author" content="zhouweinuo">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <title>BigData</title>
+  <!-- docsify主题样式 -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <!-- gittalk评论 -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+  <!-- 数学公式渲染样式 -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css" />
+  <!-- 左侧侧边栏样式 -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar.min.css" />
+  <!-- 复制提醒 -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css" />
+  <style>
+    <style>
+
+    /* 一级标题的样式 */
+    .markdown-section h1 {
+      font-size: 36px;
+      text-align: center;
+    }
+
+    .markdown-section h1 a>span {
+      color: #206864;
+      border-bottom: 1px solid #eee;
+    }
+
+    /* 二级标题的样式 */
+    .markdown-sectio h2 {
+      font-size: 32px;
+    }
+
+    .markdown-section h2 a>span {
+      color: #1c8d6c;
+      border-bottom: 1px solid #eee;
+    }
+
+    /* 三级标题的样式 */
+    .markdown-section h3 {
+      font-size: 28px;
+    }
+
+    /* 四级标题的样式 */
+    .markdown-section h4 {
+      font-size: 24px;
+    }
+
+    /* 五级标题的样式 */
+    .markdown-section h5 {
+      font-size: 20px;
+    }
+
+    /* 六级标题的样式 */
+    .markdown-section h6 {
+      font-size: 18px;
+    }
+
+    /* 导航栏样式 */
+    .app-nav {
+      /* background: linear-gradient(to right, #c9d6ff, #e2e2e2); */
+      padding: 10px;
+    }
+
+    .app-nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .app-nav ul>li {
+      display: inline-block;
+      margin-right: 20px;
+    }
+
+    .app-nav li:last-child {
+      margin-right: 0;
+    }
+
+    .app-nav li a {
+      display: inline-block;
+      padding: 10px;
+      text-decoration: none;
+    }
+
+    .app-nav li a:hover {
+      background-color: #ddd;
+    }
+
+    .app-nav li.active a {
+      color: #fff;
+      background-color: #333;
+    }
+
+    /* 加重描述 strong*/
+    .markdown-section strong {
+      color: rgb(239, 112, 96);
+    }
+
+    /* 倾斜 em*/
+    .markdown-section em {
+      font-style: italic;
+      color: #3498db;
+      /* 深紫色 */
+      font-weight: 500;
+      /* 稍微加粗一点 */
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+      /* 添加文字阴影效果 */
+      transform: skewX(-10deg);
+      /* 倾斜10度 */
+      display: inline-block;
+      /* 确保转换效果生效 */
+    }
+
+    /* 链接 */
+    .markdown-section a:not(:hover) {
+      text-decoration: none;
+      transition: color 0.3s ease, text-decoration 0.3s ease;
+    }
+
+    /* 滚动条整体样式 */
+    ::-webkit-scrollbar {
+      width: 12px;
+      /* 宽度 */
+      height: 12px;
+      /* 高度 */
+    }
+
+    /* 滚动条轨道 */
+    ::-webkit-scrollbar-track {
+      background-color: #f1f1f1;
+      /* 轨道颜色 */
+      border-radius: 6px;
+      /* 轨道圆角 */
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+      /* 轨道阴影 */
+    }
+
+    /* 滚动条滑块 */
+    ::-webkit-scrollbar-thumb {
+      background-color: #c1c1c1;
+      /* 滑块颜色 */
+      border-radius: 6px;
+      /* 滑块圆角 */
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+      /* 滑块阴影 */
+      background-image: -webkit-linear-gradient(45deg, #9b59b6, #3498db);
+      /* 滑块渐变背景 */
+      background-size: 100% 100%;
+      /* 渐变背景尺寸 */
+      background-origin: content-box;
+      /* 渐变背景原点 */
+    }
+
+    /* 滚动条滑块hover状态 */
+    ::-webkit-scrollbar-thumb:hover {
+      background-color: #a8a8a8;
+      /* hover时滑块颜色 */
+    }
+
+    /* 滚动条角落 */
+    ::-webkit-scrollbar-corner {
+      background-color: #f1f1f1;
+      /* 角落颜色 */
+    }
+
+    .markdown-section pre {
+      background-color: rgb(40, 44, 52);
+      border: 0;
+      border-radius: 4px;
+      padding: 0;
+    }
+
+    .markdown-section code {
+      font-size: 16px !important;
+      margin: 0 2px;
+      padding: 0;
+      white-space: nowrap;
+      border: 1px solid rgb(40, 44, 52);
+      border-radius: 2px;
+      color: rgb(184, 101, 208);
+    }
+
+    .markdown-section pre>code {
+      color: rgb(184, 101, 208);
+      font-family: consolas, "PingFang SC", "Microsoft YaHei", monospace;
+      font-size: 16px;
+      line-height: 1.5;
+      tab-size: 4;
+      border-radius: .3em;
+      background-color: rgb(40, 44, 52);
+    }
+
+    .markdown-section pre:before {
+      content: '';
+      display: block;
+      background: url(https://cdn.jsdelivr.net/gh/weno861/image@main/img/202404131540422.png) no-repeat 10px 10px;
+      height: 30px;
+      background-size: 40px;
+      background-color: rgb(40, 44, 52);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 设置加载中的行为 -->
+  <div id="app">
+    <div>Loading...</div>
+    <div>
+      <img src="coverpage.png" alt="coverpage">
+    </div>
+  </div>
+  <div id="gittalk-container"></div>
+  <script>
+    window.$docsify = {
+      name: "BigData",  // 文档标题
+      repo: 'https://github.com/weinuozhou/BigData', // 仓库地址
+      loadNavbar: true, // 加载导航栏，需要目录下有_navbar.md文件
+      loadSidebar: true, // 加载侧边栏,需要目录下有_sidebar.md文件
+      MaxLevel: 6, // 最大标题
+      subMaxLevel: 4, // 左侧侧边栏显示目录级数
+      sidebarDisplayLevel: 1, // 
+      auto2top: true, // 切换页面后跳回页面顶部
+      onlyCover: true, // 只在访问主页时加载封面
+      mergeNavbar: true, // 移动设备合并导航栏到侧边栏
+      executeScript: true, // 执行外联
+      externalLinkTarget: '_blank', // 在新窗口打开链接
+      notFoundPage: true, // 加载_404.md
+      topMargin: 90, // 滚动到锚点是与顶部的距离
+      //插件设置
+      // -----------------------------------------------------
+      // 搜索配置
+      search: {
+        paths: 'auto',
+        placeholder: '搜索...',
+        noData: '找不到结果...换个关键词试试',
+        depth: 6,
+        maxAge: 86400000,
+        hideOtherSidebarContent: false,
+      },
+      // 字数统计插件
+      count: {
+        countable: true,
+        position: 'top',
+        margin: '50px',
+        float: 'top',
+        fontsize: '0.9em',
+        color: '#71C8DC',
+        language: 'chinese',
+        localization: {
+          words: "",
+          minute: ""
+        },
+        isExpected: true,
+      },
+      // 分页导航插件
+      pagination: {
+        previousText: 'Privious',
+        nextText: 'Next',
+        crossChapter: true,
+        crossChapterText: true
+      },
+      // 文本高亮
+      'flexible-alerts': {
+        style: 'flat',
+        note: {
+          label: "信息"
+        },
+        tip: {
+          label: "提示"
+        },
+        warning: {
+          label: "注意"
+        },
+        attention: {
+          label: "切记"
+        }
+      },
+      // 隐藏代码
+      hideCode: {
+        scroll: false, // Enable scrolling
+        height: 300 // Max height
+      },
+      // 评论系统
+      gitalk: {
+        clientID: '792a76ceaf1a5486317c',
+        clientSecret: '08f2c07e3d51717b2cba0b36c161be5ffd91aeb4',
+        repo: 'docsify-gittalk',
+        owner: 'weinuozhou',
+        admin: ['weinuozhou'],
+        disractionFreeMode: false,
+        id: decodeURI(window.location.pathname),
+      },
+    }
+  </script>
+  <!-- docsify依赖插件 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+  <!-- 复制提醒 -->
+  <script type="text/javascript" src="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.js"></script>
+  <script>
+    window.onload = function () {
+      document.body.oncopy = function () {
+        swal("复制成功 🎉",
+          "若要转载或引用请务必保留原文链接，并申明来源。如果你觉得本仓库不错，那就来 GitHub 给个 Star 吧 😊",
+          "success");
+      };
+    }
+  </script>
+  <!-- 数学公式渲染 -->
+  <script src="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/marked@4"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-katex@latest/dist/docsify-katex.js"></script>
+  <!-- 图片缩放插件 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+  <!-- 复制代码插件 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+  <!-- 分页导航 -->
+  <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
+  <!-- 全文搜索插件 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <!-- 代码高亮 -->
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-sql.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bson.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-java.min.js"></script>
+  <!-- 左侧侧边栏 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
+  <!-- 文本高亮 -->
+  <script src="https://unpkg.com/docsify-plugin-flexible-alerts"></script>
+  <!-- 自动添加空格 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-pangu/lib/pangu.min.js"></script>
+  <!-- 字数统计插件 -->
+  <script src="//unpkg.com/docsify-count/dist/countable.js"></script>
+  <!-- gittalk评论 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/gitalk.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+  <script src="https://unpkg.com/docsify-gitalk@1.0.0/dist/docsify-gitalk.min.js"></script>
+  <!-- 长代码进行隐藏 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-hide-code/dist/docsify-hide-code.min.js"></script>
+  <!-- 回到顶部功能 -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+  <script>
+      /*
+   *
+   * Copyright (c) 2014-2018 Daniele Lenares (https://github.com/dnlnrs)
+   * Dual licensed under the MIT (http://www.opensource.org/licenses/mit-license.php)
+   * and GPL (http://www.opensource.org/licenses/gpl-license.php) licenses.
+   *
+   * Version 1.1.3
+   *
+   */
+      (function ($) {
+
+        'use strict';
+
+        /**
+         * Animate the input object
+         *
+         * @param $obj
+         * @param type
+         * @param animation
+         */
+        function do_animation($obj, type, animation) {
+          if (type === 'show') {
+            switch (animation) {
+              case 'fade':
+                $obj.fadeIn();
+                break;
+
+              case 'slide':
+                $obj.slideDown();
+                break;
+
+              default:
+                $obj.fadeIn();
+            }
+          } else {
+            switch (animation) {
+              case 'fade':
+                $obj.fadeOut();
+                break;
+
+              case 'slide':
+                $obj.slideUp();
+                break;
+
+              default:
+                $obj.fadeOut();
+            }
+          }
+        }
+
+        /**
+         * Bind click event
+         *
+         * @param $obj
+         * @param speed
+         */
+        function click_event($obj, speed) {
+          var not_clicked = true;
+          $obj.on('click', function () {
+            if (not_clicked === true) {
+              not_clicked = false;
+              $('html, body').animate({ scrollTop: 0 }, speed, function () {
+                not_clicked = true;
+              });
+            }
+          });
+        }
+
+
+        $.goup = function (user_params) {
+
+          /* Default Params */
+          var params = $.extend({
+            location: 'right',
+            locationOffset: 20,
+            bottomOffset: 10,
+            containerSize: 40,
+            containerRadius: 10,
+            containerClass: 'goup-container',
+            arrowClass: 'goup-arrow',
+            alwaysVisible: false,
+            trigger: 500,
+            entryAnimation: 'fade',
+            goupSpeed: 'slow',
+            hideUnderWidth: 500,
+            containerColor: '#42B983',
+            arrowColor: '#fff',
+            title: '',
+            titleAsText: false,
+            titleAsTextClass: 'goup-text',
+            zIndex: 1
+          }, user_params);
+          /* */
+
+          /* Parameters check */
+          if (params.location !== 'right' && params.location !== 'left') {
+            params.location = 'right';
+          }
+
+          if (params.locationOffset < 0) {
+            params.locationOffset = 0;
+          }
+
+          if (params.bottomOffset < 0) {
+            params.bottomOffset = 0;
+          }
+
+          if (params.containerSize < 20) {
+            params.containerSize = 20;
+          }
+
+          if (params.containerRadius < 0) {
+            params.containerRadius = 0;
+          }
+
+          if (params.trigger < 0) {
+            params.trigger = 0;
+          }
+
+          if (params.hideUnderWidth < 0) {
+            params.hideUnderWidth = 0;
+          }
+
+          var checkColor = /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i;
+          if (!checkColor.test(params.containerColor)) {
+            params.containerColor = '#000';
+          }
+          if (!checkColor.test(params.arrowColor)) {
+            params.arrowColor = '#fff';
+          }
+
+          if (params.title === '') {
+            params.titleAsText = false;
+          }
+
+          if (isNaN(params.zIndex)) {
+            params.zIndex = 1;
+          }
+          /* */
+
+          /* Create required elements */
+          var $body = $('body');
+          var $window = $(window);
+
+          var $container = $('<div>');
+          $container.addClass(params.containerClass);
+          var $arrow = $('<div>');
+          $arrow.addClass(params.arrowClass);
+
+          $container.html($arrow);
+
+          $body.append($container);
+
+
+          /* Container Style */
+          var containerStyle = {
+            position: 'fixed',
+            width: params.containerSize,
+            height: params.containerSize,
+            background: params.containerColor,
+            cursor: 'pointer',
+            display: 'none',
+            'z-index': params.zIndex
+          };
+          containerStyle['bottom'] = params.bottomOffset;
+          containerStyle[params.location] = params.locationOffset;
+          containerStyle['border-radius'] = params.containerRadius;
+
+          $container.css(containerStyle);
+
+          if (!params.titleAsText) {
+            $container.attr('title', params.title);
+          } else {
+            var $textContainer = $('<div>');
+            $body.append($textContainer);
+            $textContainer.addClass(params.titleAsTextClass).text(params.title);
+            $textContainer.attr('style', $container.attr('style'));
+            $textContainer.css('background', 'transparent')
+              .css('width', params.containerSize + 40)
+              .css('height', 'auto')
+              .css('text-align', 'center')
+              .css(params.location, params.locationOffset - 20);
+            var textContainerHeight = parseInt($textContainer.height()) + 10;
+            var containerBottom = parseInt($container.css('bottom'));
+            var containerNewBottom = textContainerHeight + containerBottom;
+            $container.css('bottom', containerNewBottom);
+          }
+
+
+          /* Arrow Style */
+          var borderSize = 0.25 * params.containerSize;
+          var arrowStyle = {
+            width: 0,
+            height: 0,
+            margin: '0 auto',
+            'padding-top': Math.ceil(0.325 * params.containerSize),
+            'border-style': 'solid',
+            'border-width': '0 ' + borderSize + 'px ' + borderSize + 'px ' + borderSize + 'px',
+            'border-color': 'transparent transparent ' + params.arrowColor + ' transparent'
+          };
+          $arrow.css(arrowStyle);
+          /* */
+
+
+          /* params.trigger Hide under a certain width */
+          var isHidden = false;
+          $window.resize(function () {
+            if ($window.outerWidth() <= params.hideUnderWidth) {
+              isHidden = true;
+              do_animation($container, 'hide', params.entryAnimation);
+              if (typeof ($textContainer) !== 'undefined') {
+                do_animation($textContainer, 'hide', params.entryAnimation);
+              }
+            } else {
+              isHidden = false;
+              $window.trigger('scroll');
+            }
+          });
+          /* If i load the page under a certain width, i don't have the event 'resize' */
+          if ($window.outerWidth() <= params.hideUnderWidth) {
+            isHidden = true;
+            $container.hide();
+            if (typeof ($textContainer) !== 'undefined')
+              $textContainer.hide();
+          }
+
+
+          /* params.trigger show event */
+          if (!params.alwaysVisible) {
+            $window.scroll(function () {
+              if ($window.scrollTop() >= params.trigger && !isHidden) {
+                do_animation($container, 'show', params.entryAnimation);
+                if (typeof ($textContainer) !== 'undefined') {
+                  do_animation($textContainer, 'show', params.entryAnimation);
+                }
+              } else {
+                do_animation($container, 'hide', params.entryAnimation);
+                if (typeof ($textContainer) !== 'undefined') {
+                  do_animation($textContainer, 'hide', params.entryAnimation);
+                }
+              }
+            });
+          } else {
+            do_animation($container, 'show', params.entryAnimation);
+            if (typeof ($textContainer) !== 'undefined') {
+              do_animation($textContainer, 'show', params.entryAnimation);
+            }
+          }
+          /* If i load the page and the scroll is over the trigger, i don't have immediately the event 'scroll' */
+          if ($window.scrollTop() >= params.trigger && !isHidden) {
+            do_animation($container, 'show', params.entryAnimation);
+            if (typeof ($textContainer) !== 'undefined') {
+              do_animation($textContainer, 'show', params.entryAnimation);
+            }
+          }
+
+          click_event($container, params.goupSpeed);
+          if (typeof ($textContainer) !== 'undefined') {
+            click_event($textContainer, params.goupSpeed);
+          }
+        };
+      }(jQuery));
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $.goup({
+        trigger: 100,
+        bottomOffset: 52,
+        locationOffset: 25,
+        // title: 'TOP',
+        titleAsText: true
+      });
+    });
+  </script>
+  <!-- 点击屏幕出现小爱心 -->
+  <script>
+    !function (e, t, a) { function r(e) { var a = t.createElement("div"); a.className = "heart", n.push({ el: a, x: e.clientX - 5, y: e.clientY - 5, scale: 1, alpha: 1, color: "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")" }), t.body.appendChild(a) } var n = []; e.requestAnimationFrame = e.requestAnimationFrame || e.webkitRequestAnimationFrame || e.mozRequestAnimationFrame || e.oRequestAnimationFrame || e.msRequestAnimationFrame || function (e) { setTimeout(e, 1e3 / 60) }, function (e) { var a = t.createElement("style"); a.type = "text/css"; try { a.appendChild(t.createTextNode(e)) } catch (t) { a.styleSheet.cssText = e } t.getElementsByTagName("head")[0].appendChild(a) }(".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}"), function () { var t = "function" == typeof e.onclick && e.onclick; e.onclick = function (e) { t && t(), r(e) } }(), function e() { for (var a = 0; a < n.length; a++)n[a].alpha <= 0 ? (t.body.removeChild(n[a].el), n.splice(a, 1)) : (n[a].y--, n[a].scale += .004, n[a].alpha -= .013, n[a].el.style.cssText = "left:" + n[a].x + "px;top:" + n[a].y + "px;opacity:" + n[a].alpha + ";transform:scale(" + n[a].scale + "," + n[a].scale + ") rotate(45deg);background:" + n[a].color + ";z-index:99999"); requestAnimationFrame(e) }() }(window, document);
+  </script>
+  <!-- markmap设置 -->
+  <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@0.15.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-markmap.js@1.0.0/docsify-markmap.min.js"></script>
+  <!-- 看板娘 -->
+  <script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget/autoload.js"></script>
+
+</body>
+
+</html>
