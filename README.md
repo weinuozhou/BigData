@@ -1,6 +1,5 @@
-## 大数据技术概述
+### 大数据技术概述
 
-<hr>
 
 * [大数据技术概述](/Intro/)
 * [推荐系统概述](/Intro/recomendationSystem)
@@ -9,7 +8,6 @@
 
 ### 大数据相关软件安装
 
-<hr>
 
 * [大数据软件安装包](/softwareInstall/)
 * [zookeeper集群环境搭建](/softwareInstall/zookeeper集群环境搭建)
@@ -20,7 +18,6 @@
 
 ### Linux 基础
 
-<hr>
 
 * [Linux操作系统简介](/Linux/)
 * **`Linux` 命令基础**
@@ -41,8 +38,6 @@
 
 ### 大数据核心组件--Hadoop
 
-<hr>
-
 * **`Hadoop` 技术栈**
     * **`Hadoop` 基础**
         * [Hadoop的简介](/Hadoop技术栈/Hadoop/)
@@ -59,8 +54,6 @@
 
 ### 数据仓库应用--Hive
 
-<hr>
-
 * **`Hive`技术栈**
     * [数据仓库基础](/Hive技术栈/)
     * [OLAP与多维数据模型](/Hive技术栈/OLAP与多维数据模型)
@@ -70,8 +63,6 @@
 <hr>
 
 ### 基于内存的分布式计算框架--Spark
-
-<hr>
 
 * **`Spark` 技术栈**
     * **`SparkCore`**
